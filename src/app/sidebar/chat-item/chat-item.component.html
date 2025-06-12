@@ -1,0 +1,29 @@
+<div class="chat-item" [class.active]="active" [@listItem]>
+  <img src="assets/icons/chat-icon.svg" alt="💬" class="chat-icon" width="16" height="16" />
+  
+  <div class="chat-title" *ngIf="!isEditing" (dblclick)="startEdit()">{{ chat.title }}</div>
+  
+  <input 
+    *ngIf="isEditing" 
+    class="chat-title-input" 
+    [(ngModel)]="editTitle" 
+    (blur)="saveEdit()" 
+    (keydown.enter)="saveEdit()" 
+    (keydown.escape)="cancelEdit()"
+    #titleInput
+  />
+  
+  <div class="chat-actions" *ngIf="!isEditing">
+    <button class="action-btn edit-btn" (click)="startEdit()" title="Rename">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" stroke-width="2"/>
+        <path d="m18.5 2.5 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </button>
+    <button class="action-btn delete-btn" (click)="deleteChat()" title="Delete">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6h14z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </button>
+  </div>
+</div>

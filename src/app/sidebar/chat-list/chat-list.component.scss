@@ -1,0 +1,7 @@
+.chat-list-host { /* will not render */ }
+:host {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 20px;
+  display: block;
+}

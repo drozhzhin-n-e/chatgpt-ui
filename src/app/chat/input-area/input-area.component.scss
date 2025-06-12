@@ -1,0 +1,10 @@
+.input-area { padding:20px; background: var(--bg-main); }
+@media (max-height: 600px) {
+  .input-area { padding:12px; }
+}
+.input-container { position:relative; width:100%; max-width:760px; margin:0 auto; display:flex; align-items:center; gap:8px; background: #202123; border-radius:12px; padding:14px 20px; }
+.message-input { flex:1; background:transparent; border:none; color:#fff; resize:none; font-size:14px; font-family:inherit; outline:none; }
+.send-button { width:36px;height:36px;background:transparent;border:none;cursor:pointer; padding:4px; border-radius:8px; opacity:0.4; transition:opacity 0.2s; display:flex; align-items:center; justify-content:center; }
+.send-button.active { opacity:1; }
+.send-button:hover { background: rgba(255,255,255,0.05); }
+.send-button img { width:20px; height:20px; filter: brightness(0) saturate(100%) invert(100%); }

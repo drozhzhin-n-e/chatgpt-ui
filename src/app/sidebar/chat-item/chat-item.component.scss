@@ -1,0 +1,98 @@
+:host {
+  display: block;
+}
+
+.chat-item {
+  padding: 12px;
+  border-radius: 8px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+  gap: 8px;
+}
+
+.chat-item.active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.chat-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.chat-icon {
+  margin-right: 12px;
+  filter: brightness(0) saturate(100%) invert(100%);
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.chat-item:hover .chat-icon,
+.chat-item.active .chat-icon {
+  opacity: 1;
+}
+
+.chat-title {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  margin-right: 8px;
+}
+
+.chat-title-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  color: #fff;
+  outline: none;
+  margin-right: 8px;
+}
+
+.chat-title-input:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.chat-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.chat-item:hover .chat-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}

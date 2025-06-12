@@ -1,0 +1,20 @@
+.app-container { 
+  display: flex; 
+  height: 100vh; 
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent any overflow issues */
+}
+
+/* Ensure sidebar has fixed width */
+app-sidebar {
+  flex-shrink: 0; /* Don't shrink sidebar */
+}
+
+/* Ensure chat-view takes remaining space */
+app-chat-view {
+  flex: 1;
+  min-width: 0; /* Allow shrinking if needed */
+  overflow: hidden; /* Prevent overflow */
+}

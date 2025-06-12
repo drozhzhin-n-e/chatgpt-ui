@@ -1,0 +1,36 @@
+<div class="sidebar">
+  <!-- Header -->
+  <div class="sidebar-header">
+    <button class="new-chat-btn" (click)="newChat()">
+      <img src="assets/icons/add-icon.svg" alt="+" width="16" height="16" />
+      New chat
+    </button>
+  </div>
+
+  <!-- Chat list -->
+  <app-chat-list></app-chat-list>
+
+  <!-- Footer menu -->
+  <div class="sidebar-footer">
+    <div class="menu-item">
+      <img src="assets/icons/clear-icon.svg" alt="🗑️" class="menu-icon" width="16" height="16" />
+      <span class="menu-text">Clear conversations</span>
+    </div>
+    <div class="menu-item">
+      <img src="assets/icons/light-mode-icon.svg" alt="☀️" class="menu-icon" width="16" height="16" />
+      <span class="menu-text">Light mode</span>
+    </div>
+    <div class="menu-item">
+      <img src="assets/icons/account-icon.svg" alt="👤" class="menu-icon" width="16" height="16" />
+      <span class="menu-text">My account</span>
+    </div>
+    <div class="menu-item">
+      <img src="assets/icons/faq-icon.svg" alt="❓" class="menu-icon" width="16" height="16" />
+      <span class="menu-text">Updates & FAQ</span>
+    </div>
+    <div class="menu-item">
+      <img src="assets/icons/logout-icon.svg" alt="🚪" class="menu-icon" width="16" height="16" />
+      <span class="menu-text">Log out</span>
+    </div>
+  </div>
+</div>

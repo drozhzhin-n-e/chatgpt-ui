@@ -1,0 +1,9 @@
+<div class="messages-container">
+  <div class="messages-list">
+    <app-message-bubble 
+      *ngFor="let msg of messages$ | async; trackBy: trackByMessageId" 
+      [msg]="msg"
+      [@slideIn]>
+    </app-message-bubble>
+  </div>
+</div>

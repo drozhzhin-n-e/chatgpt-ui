@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* --------------------------------------------------
+   Global styles & Dark theme variables
+-------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* colors */
+  --bg-main: #1C1C1C;
+  --bg-sidebar: #1C1C1C;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --accent: #C6C7F8;
+  --msg-user: #2F2F2F;
+  --msg-assistant: #444654;
+  --text-main: #FFFFFF;
+}
+
+/* CSS Reset / Normalize (minimal) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* Utility classes */
+.flex { display: flex; }
+.hidden-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
+.hidden-scrollbar::-webkit-scrollbar { width: 0; height: 0; }

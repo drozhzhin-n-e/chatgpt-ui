@@ -1,0 +1,36 @@
+<div class="welcome-screen">
+  <div class="chatgpt-header">
+    <img src="assets/icons/chatgpt-full-logo.svg" alt="ChatGPT" class="chatgpt-logo" />
+    <span class="plus-tag">Plus</span>
+  </div>
+
+  <div class="capabilities-grid">
+    <div class="capability-section">
+      <div class="capability-header">
+        <img src="assets/icons/examples-icon.svg" alt="Examples" class="capability-icon" />
+        <h3>Examples</h3>
+      </div>
+      <div class="capability-item" (click)="useExample('Explain quantum computing in simple terms')">"Explain quantum computing in simple terms"</div>
+      <div class="capability-item" (click)="useExample('Got any creative ideas for a 10 year old\'s birthday?')">"Got any creative ideas for a 10 year old's birthday?"</div>
+      <div class="capability-item" (click)="useExample('How do I make an HTTP request in Javascript?')">"How do I make an HTTP request in Javascript?"</div>
+    </div>
+    <div class="capability-section">
+      <div class="capability-header">
+        <img src="assets/icons/capabilities-icon.svg" alt="Capabilities" class="capability-icon" />
+        <h3>Capabilities</h3>
+      </div>
+      <div class="capability-item">Remembers what user said earlier in the conversation.</div>
+      <div class="capability-item">Allows user to provide follow-up corrections.</div>
+      <div class="capability-item">Trained to decline inappropriate requests.</div>
+    </div>
+    <div class="capability-section">
+      <div class="capability-header">
+        <img src="assets/icons/limitations-icon.svg" alt="Limitations" class="capability-icon" />
+        <h3>Limitations</h3>
+      </div>
+      <div class="capability-item">May occasionally generate incorrect information.</div>
+      <div class="capability-item">May occasionally produce harmful instructions or biased content.</div>
+      <div class="capability-item">Limited knowledge of world and events after 2021.</div>
+    </div>
+  </div>
+</div>
