@@ -40,8 +40,8 @@
 
 .capabilities-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(24px, 5vw, 60px);
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: clamp(20px, 3vw, 32px);
   width: 100%;
   max-width: 1200px;
   
