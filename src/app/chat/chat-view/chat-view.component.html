@@ -1,6 +1,8 @@
 <div class="main-chat">
   <div class="chat-inner">
-    <div class="chat-body" *ngIf="(messages$ | async) as msgs">
+    <div class="chat-body" 
+         [class.welcome-active]="(messages$ | async)?.length === 0"
+         *ngIf="(messages$ | async) as msgs">
       <app-welcome-screen *ngIf="msgs.length === 0"></app-welcome-screen>
       <app-messages-container *ngIf="msgs.length > 0"></app-messages-container>
     </div>

@@ -1,12 +1,10 @@
 <ng-container *ngIf="(chats$ | async) as chats">
-  <ng-container *ngIf="(currentId$ | async) as currentId">
-    <app-chat-item 
-      *ngFor="let c of chats" 
-      [chat]="c" 
-      [active]="currentId === c.id" 
-      (click)="select(c.id)"
-      (rename)="rename($event)"
-      (delete)="delete($event)"
-    ></app-chat-item>
-  </ng-container>
+  <app-chat-item 
+    *ngFor="let c of chats" 
+    [chat]="c" 
+    [active]="(currentId$ | async) === c.id" 
+    (click)="select(c.id)"
+    (rename)="rename($event)"
+    (delete)="delete($event)"
+  ></app-chat-item>
 </ng-container>

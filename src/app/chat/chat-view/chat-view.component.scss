@@ -24,6 +24,12 @@
   flex: 1; 
   overflow-y: auto; 
   min-height: 0; /* Allow shrinking */
+  
+  &.welcome-active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 /* Медиа-запросы для разных размеров экрана */
