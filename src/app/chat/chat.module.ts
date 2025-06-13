@@ -7,22 +7,17 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
 import { MessagesContainerComponent } from './messages-container/messages-container.component';
 import { MessageBubbleComponent } from './message-bubble/message-bubble.component';
 import { InputAreaComponent } from './input-area/input-area.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
-    ChatViewComponent,
-    WelcomeScreenComponent,
-    MessagesContainerComponent,
-    MessageBubbleComponent,
-    InputAreaComponent
+    WelcomeComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     FormsModule
   ],
-  exports: [
-    ChatViewComponent
-  ]
+  exports: []
 })
 export class ChatModule { }

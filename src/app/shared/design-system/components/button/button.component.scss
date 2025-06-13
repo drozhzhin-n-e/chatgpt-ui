@@ -1,0 +1,58 @@
+@import '../../mixins/index';
+
+:host {
+  display: inline-block;
+
+  &.ds-button--full-width {
+    display: block;
+    width: 100%;
+  }
+}
+
+.ds-button-element {
+  @include button-base;
+  width: 100%;
+}
+
+// Size variants
+:host.ds-button--sm .ds-button-element {
+  @include button-size('sm');
+}
+
+:host.ds-button--md .ds-button-element {
+  @include button-size('md');
+}
+
+:host.ds-button--lg .ds-button-element {
+  @include button-size('lg');
+}
+
+// Color variants
+:host.ds-button--primary .ds-button-element {
+  @include button-variant('primary');
+}
+
+:host.ds-button--secondary .ds-button-element {
+  @include button-variant('secondary');
+}
+
+.ds-button__content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+
+  &.ds-button__content--hidden {
+    opacity: 0;
+  }
+}
+
+.ds-button__spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+

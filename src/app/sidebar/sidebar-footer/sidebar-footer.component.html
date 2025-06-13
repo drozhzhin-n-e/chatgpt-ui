@@ -1,1 +1,26 @@
-<p>sidebar-footer works!</p>
+<div class="sidebar-footer">
+  <div class="menu-item" (click)="toggleTheme()">
+    <img class="menu-icon" src="assets/icons/light-mode-icon.svg" alt="Theme toggle">
+    <span class="menu-text">{{ (theme$ | async) === 'light' ? 'Dark mode' : 'Light mode' }}</span>
+  </div>
+  
+  <div class="menu-item">
+    <img class="menu-icon" src="assets/icons/clear-icon.svg" alt="Clear conversations">
+    <span class="menu-text">Clear conversations</span>
+  </div>
+  
+  <div class="menu-item">
+    <img class="menu-icon" src="assets/icons/account-icon.svg" alt="My account">
+    <span class="menu-text">My account</span>
+  </div>
+  
+  <div class="menu-item">
+    <img class="menu-icon" src="assets/icons/faq-icon.svg" alt="Updates & FAQ">
+    <span class="menu-text">Updates & FAQ</span>
+  </div>
+  
+  <div class="menu-item">
+    <img class="menu-icon" src="assets/icons/logout-icon.svg" alt="Log out">
+    <span class="menu-text">Log out</span>
+  </div>
+</div> 

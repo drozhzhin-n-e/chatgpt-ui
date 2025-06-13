@@ -1,39 +1,203 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* --------------------------------------------------
-   Global styles & Dark theme variables
+   Import Google Fonts (Inter)
 -------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-:root {
-  /* colors */
-  --bg-main: #1C1C1C;
-  --bg-sidebar: #1C1C1C;
-  --border-subtle: rgba(255, 255, 255, 0.12);
-  --accent: #C6C7F8;
-  --msg-user: #2F2F2F;
-  --msg-assistant: #444654;
-  --text-main: #FFFFFF;
-}
+/* --------------------------------------------------
+   Global Styles
+-------------------------------------------------- */
 
-/* CSS Reset / Normalize (minimal) */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 html, body {
   height: 100%;
-}
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg-main);
-  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* Utility classes */
-.flex { display: flex; }
-.hidden-scrollbar {
-  scrollbar-width: none; /* Firefox */
+/* --------------------------------------------------
+   CSS Custom Properties - Light Theme (Default)
+-------------------------------------------------- */
+:root {
+  /* Colors - Light Theme (согласно макету Figma) */
+  --color-bg-primary: #F7F9FB;          /* Основной фон светлой темы */
+  --color-bg-secondary: #FFFFFF;         /* Вторичный фон (сайдбар, карточки) */
+  --color-bg-tertiary: rgba(255, 255, 255, 0.8);
+  --color-bg-sidebar: #FFFFFF;           /* Фон сайдбара */
+  --color-bg-input: rgba(255, 255, 255, 0.8);
+  --color-bg-hover: rgba(28, 28, 28, 0.05);
+  
+  --color-text-primary: #1C1C1C;        /* Основной текст */
+  --color-text-secondary: rgba(28, 28, 28, 0.7);
+  --color-text-tertiary: rgba(28, 28, 28, 0.5);
+  --color-text-placeholder: rgba(28, 28, 28, 0.2);
+  
+  --color-border-primary: rgba(28, 28, 28, 0.1);
+  --color-border-secondary: rgba(28, 28, 28, 0.05);
+  
+  --color-accent: #C6C7F8;              /* Цвет акцента из макета */
+  --color-accent-hover: #BE6BFF;
+  --color-accent-gradient: linear-gradient(135deg, #FFFFFF 0%, #BE6BFF 54%, #625FFF 65%, #C6C7F8 78%);
+  
+  /* Специальные цвета для кнопок */
+  --color-button-accent-bg: #C6C7F8;    /* Фон акцентной кнопки */
+  --color-button-accent-text: #1C1C1C;  /* Текст на акцентной кнопке (всегда темный) */
+  --color-icon-primary: #1C1C1C;        /* Основной цвет иконок */
+  --color-icon-secondary: #FFFFFF;      /* Вторичный цвет иконок */
+  
+  --color-chat-user-bg: #FFFFFF;         /* Белый фон как у сообщений ассистента */
+  --color-chat-assistant-bg: #FFFFFF;
+  
+  --color-success: #10a37f;
+  --color-success-hover: #0d8f6f;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  
+  /* Spacing */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  
+  /* Typography */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 250ms ease-out;
+  --transition-slow: 350ms ease-out;
+  
+  /* Backdrop Blur */
+  --backdrop-blur: blur(100px);
+  --backdrop-blur-sm: blur(40px);
+  
+  /* Icon Filters */
+  --filter-icon-dark: brightness(0) saturate(100%) invert(11%) sepia(10%) saturate(1574%) hue-rotate(215deg) brightness(95%) contrast(87%);
+  --filter-icon-light: brightness(0) saturate(100%) invert(100%);
+  --filter-icon-black: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(0deg) brightness(0%) contrast(100%);
+  
+  /* Специальные фоны для области ввода */
+  --color-input-area-bg: rgba(255, 255, 255, 0.8); /* Фон области ввода в светлой теме */
 }
-.hidden-scrollbar::-webkit-scrollbar { width: 0; height: 0; }
+
+/* --------------------------------------------------
+   Dark Theme (согласно макету Figma)
+-------------------------------------------------- */
+[data-theme="dark"] {
+  --color-bg-primary: #1C1C1C;          /* Темный фон основной области (fill_WXISH7) */
+  --color-bg-secondary: #2A2A2A;         /* Темный фон для карточек */
+  --color-bg-tertiary: rgba(28, 28, 28, 0.4);   /* Дополнительный фон с blur */
+  --color-bg-sidebar: #1C1C1C;           /* Темный сайдбар (fill_WXISH7) */
+  --color-bg-input: rgba(255, 255, 255, 0.05); /* Поле ввода (fill_HM019H) */
+  --color-bg-hover: rgba(255, 255, 255, 0.1);
+  
+  --color-text-primary: #FFFFFF;         /* Белый текст на темном фоне */
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-tertiary: rgba(255, 255, 255, 0.5);
+  --color-text-placeholder: rgba(255, 255, 255, 0.2);
+  
+  --color-border-primary: rgba(255, 255, 255, 0.1); /* Границы (stroke_93K2XM) */
+  --color-border-secondary: rgba(255, 255, 255, 0.05);
+  
+  /* Кнопки в темной теме - цвета остаются как в светлой теме согласно Figma */
+  --color-button-accent-bg: #C6C7F8;    /* Кнопка остается светло-фиолетовой (fill_2XXLGQ) */
+  --color-button-accent-text: #1C1C1C;  /* Текст остается темным на светлой кнопке */
+  --color-icon-primary: #FFFFFF;        /* Основные иконки белые в темной теме */
+  --color-icon-secondary: #1C1C1C;      /* Иконки на акцентных кнопках темные */
+  
+  /* Специальные фоны для области ввода в темной теме (fill_5WKPE9) */
+  --color-input-area-bg: rgba(28, 28, 28, 0.8); /* Основной фон области ввода */
+  
+  --color-chat-user-bg: rgba(255, 255, 255, 0.05);
+  --color-chat-assistant-bg: rgba(255, 255, 255, 0.02);
+}
+
+/* --------------------------------------------------
+   Legacy Variables (for backward compatibility)
+-------------------------------------------------- */
+:root {
+  --bg-main: var(--color-bg-primary);
+  --bg-sidebar: var(--color-bg-sidebar);
+  --border-subtle: var(--color-border-primary);
+  --accent: var(--color-success);
+  --msg-user: var(--color-chat-user-bg);
+  --msg-assistant: var(--color-chat-assistant-bg);
+  --text-main: var(--color-text-primary);
+}
+
+/* --------------------------------------------------
+   Utility Classes
+-------------------------------------------------- */
+.hidden-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Theme Toggle */
+.theme-light {
+  color-scheme: light;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+/* Backdrop Blur Support */
+.backdrop-blur {
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: var(--backdrop-blur-sm);
+  -webkit-backdrop-filter: var(--backdrop-blur-sm);
+}

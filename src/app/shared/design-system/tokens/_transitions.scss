@@ -1,0 +1,8 @@
+:root {
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --transition-fast: var(--duration-150) var(--ease-out);
+  --transition-base: var(--duration-200) var(--ease-out);
+  --transition-button: background-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+} 

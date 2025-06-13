@@ -1,0 +1,43 @@
+// =============================================================================
+// Spacing Tokens
+// =============================================================================
+
+:root {
+  // Base spacing unit: 4px
+  --spacing-0: 0;
+  --spacing-1: 4px;   // 0.25rem
+  --spacing-2: 8px;   // 0.5rem
+  --spacing-3: 12px;  // 0.75rem
+  --spacing-4: 16px;  // 1rem
+  --spacing-5: 20px;  // 1.25rem
+  --spacing-6: 24px;  // 1.5rem
+  --spacing-7: 28px;  // 1.75rem
+  --spacing-8: 32px;  // 2rem
+  --spacing-10: 40px; // 2.5rem
+  --spacing-12: 48px; // 3rem
+  --spacing-16: 64px; // 4rem
+  --spacing-20: 80px; // 5rem
+  --spacing-24: 96px; // 6rem
+
+  // Semantic spacing
+  --spacing-xs: var(--spacing-1);
+  --spacing-sm: var(--spacing-2);
+  --spacing-md: var(--spacing-4);
+  --spacing-lg: var(--spacing-6);
+  --spacing-xl: var(--spacing-8);
+  --spacing-2xl: var(--spacing-10);
+  --spacing-3xl: var(--spacing-12);
+
+  // Component specific spacing
+  --spacing-component-padding-sm: var(--spacing-2);
+  --spacing-component-padding-md: var(--spacing-4);
+  --spacing-component-padding-lg: var(--spacing-6);
+  
+  --spacing-component-margin-sm: var(--spacing-2);
+  --spacing-component-margin-md: var(--spacing-4);
+  --spacing-component-margin-lg: var(--spacing-6);
+
+  // Layout spacing
+  --spacing-layout-gutter: var(--spacing-5);
+  --spacing-layout-section: var(--spacing-12);
+} 

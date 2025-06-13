@@ -6,6 +6,8 @@
   width: 100%;
   min-width: 0; /* Allow shrinking */
   overflow: hidden; /* Prevent overflow issues */
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 .chat-inner { 

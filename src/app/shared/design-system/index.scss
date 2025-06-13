@@ -1,0 +1,40 @@
+// =============================================================================
+// ChatGPT UI Design System
+// =============================================================================
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+// Import design tokens
+@import 'tokens/index';
+
+// Import mixins
+@import 'mixins/index';
+
+// =============================================================================
+// Global Base Styles
+// =============================================================================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+// =============================================================================
+// Utility Classes
+// =============================================================================
+
+.flex { display: flex; } 

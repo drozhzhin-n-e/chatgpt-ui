@@ -1,10 +1,188 @@
-.input-area { padding:20px; background: var(--bg-main); }
-@media (max-height: 600px) {
-  .input-area { padding:12px; }
+.input-area { 
+  padding: var(--spacing-5); 
+  background: var(--color-bg-primary);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-input-area-bg);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    z-index: -1;
+  }
 }
-.input-container { position:relative; width:100%; max-width:760px; margin:0 auto; display:flex; align-items:center; gap:8px; background: #202123; border-radius:12px; padding:14px 20px; }
-.message-input { flex:1; background:transparent; border:none; color:#fff; resize:none; font-size:14px; font-family:inherit; outline:none; }
-.send-button { width:36px;height:36px;background:transparent;border:none;cursor:pointer; padding:4px; border-radius:8px; opacity:0.4; transition:opacity 0.2s; display:flex; align-items:center; justify-content:center; }
-.send-button.active { opacity:1; }
-.send-button:hover { background: rgba(255,255,255,0.05); }
-.send-button img { width:20px; height:20px; filter: brightness(0) saturate(100%) invert(100%); }
+
+@media (max-height: 600px) {
+  .input-area { 
+    padding: var(--spacing-3); 
+  }
+}
+
+.input-container { 
+  position: relative; 
+  width: 100%; 
+  max-width: 760px; 
+  margin: 0 auto; 
+  display: flex; 
+  align-items: center; 
+  gap: var(--spacing-3); 
+  background: var(--color-bg-input);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-xl); 
+  padding: var(--spacing-3) var(--spacing-4);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-fast);
+  min-height: 50px;
+  
+  &:focus-within {
+    /* Убираем цветную обводку при фокусе */
+    border-color: var(--color-border-primary);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.input-buttons-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.input-button {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-1);
+  border-radius: var(--radius-md);
+  opacity: 0.7;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background: var(--color-bg-hover);
+    opacity: 1;
+  }
+  
+  img {
+    width: 18px;
+    height: 18px;
+    filter: var(--filter-icon-dark);
+    transition: filter var(--transition-fast);
+  }
+}
+
+.message-input { 
+  flex: 1; 
+  background: transparent; 
+  border: none; 
+  color: var(--color-text-primary); 
+  resize: none; 
+  font-size: var(--font-size-sm); 
+  font-family: 'Inter', sans-serif; 
+  outline: none;
+  line-height: var(--line-height-normal);
+  padding: var(--spacing-1) 0;
+  margin: 0 var(--spacing-2);
+  
+  &::placeholder {
+    color: var(--color-text-placeholder);
+  }
+}
+
+.send-button { 
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer; 
+  padding: var(--spacing-1); 
+  border-radius: var(--radius-md); 
+  opacity: 0.4; 
+  transition: all var(--transition-fast); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  
+  &.active { 
+    opacity: 1;
+    background: var(--color-button-accent-bg);
+    
+    img {
+      filter: var(--filter-icon-black);
+    }
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  
+  &:hover:not(.active) { 
+    background: var(--color-bg-hover);
+    opacity: 1;
+  }
+  
+  img { 
+    width: 18px; 
+    height: 18px; 
+    filter: var(--filter-icon-dark);
+    transition: filter var(--transition-fast);
+  }
+}
+
+/* Dark theme adjustments */
+:host-context([data-theme="dark"]) {
+  .message-input {
+    color: var(--color-text-primary);
+    
+    &::placeholder {
+      color: var(--color-text-placeholder);
+    }
+  }
+  
+  .input-button {
+    img {
+      filter: var(--filter-icon-light);
+    }
+    
+    &:hover {
+      background: var(--color-bg-hover);
+    }
+  }
+  
+  .send-button {
+    img {
+      filter: var(--filter-icon-light);
+    }
+    
+    &.active {
+      background: var(--color-button-accent-bg);
+      
+      img {
+        /* В активном состоянии иконка черная на светлом фоне */
+        filter: var(--filter-icon-black);
+      }
+      
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    
+    &:hover:not(.active) {
+      background: var(--color-bg-hover);
+      
+      img {
+        filter: var(--filter-icon-light);
+      }
+    }
+  }
+}

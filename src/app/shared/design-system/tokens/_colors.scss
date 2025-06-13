@@ -1,0 +1,71 @@
+// =============================================================================
+// Color Tokens
+// =============================================================================
+
+:root {
+  // Primary Colors
+  --color-primary-50: #f0f0ff;
+  --color-primary-100: #e6e7f8;
+  --color-primary-200: #d4d5f0;
+  --color-primary-300: #c6c7f8;
+  --color-primary-400: #b8b9f0;
+  --color-primary-500: #a5a6e8;
+  --color-primary-600: #9394e0;
+  --color-primary-700: #8182d8;
+  --color-primary-800: #6f70d0;
+  --color-primary-900: #5d5ec8;
+
+  // Neutral Colors
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+  --color-neutral-950: #030712;
+
+  // Dark Theme Colors
+  --color-dark-50: #2f2f2f;
+  --color-dark-100: #2a2a2a;
+  --color-dark-200: #252525;
+  --color-dark-300: #202020;
+  --color-dark-400: #1c1c1c;
+  --color-dark-500: #181818;
+  --color-dark-600: #141414;
+  --color-dark-700: #101010;
+  --color-dark-800: #0c0c0c;
+  --color-dark-900: #080808;
+
+  // Semantic Colors
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  // Chat Specific Colors
+  --color-chat-user-bg: var(--color-dark-50);
+  --color-chat-assistant-bg: #444654;
+  --color-chat-border: rgba(255, 255, 255, 0.12);
+
+  // Background Colors
+  --color-bg-primary: var(--color-dark-400);
+  --color-bg-secondary: var(--color-dark-300);
+  --color-bg-tertiary: var(--color-dark-200);
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);
+
+  // Text Colors
+  --color-text-primary: var(--color-neutral-0);
+  --color-text-secondary: var(--color-neutral-300);
+  --color-text-tertiary: var(--color-neutral-400);
+  --color-text-inverse: var(--color-dark-400);
+
+  // Border Colors
+  --color-border-primary: var(--color-chat-border);
+  --color-border-secondary: rgba(255, 255, 255, 0.08);
+  --color-border-tertiary: rgba(255, 255, 255, 0.05);
+} 

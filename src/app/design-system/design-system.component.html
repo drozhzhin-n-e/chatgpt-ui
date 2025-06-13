@@ -1,0 +1,247 @@
+<div class="design-system">
+  <!-- Header -->
+  <header class="ds-header">
+    <div class="container">
+      <h1 class="ds-title">Design System</h1>
+      <p class="ds-subtitle">ChatGPT UI Components & Design Tokens</p>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="ds-nav">
+    <div class="container">
+      <div class="nav-content">
+        <button class="back-to-chat-btn" (click)="navigateToChat()">
+          ← Back to Chat
+        </button>
+        <div class="nav-links">
+          <button class="nav-link" [class.active]="activeSection === 'colors'" (click)="scrollToSection('colors')">Colors</button>
+          <button class="nav-link" [class.active]="activeSection === 'typography'" (click)="scrollToSection('typography')">Typography</button>
+          <button class="nav-link" [class.active]="activeSection === 'buttons'" (click)="scrollToSection('buttons')">Buttons</button>
+          <button class="nav-link" [class.active]="activeSection === 'icons'" (click)="scrollToSection('icons')">Icons</button>
+          <button class="nav-link" [class.active]="activeSection === 'components'" (click)="scrollToSection('components')">Components</button>
+          <button class="nav-link" [class.active]="activeSection === 'spacing'" (click)="scrollToSection('spacing')">Spacing</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main class="ds-content">
+    <div class="container">
+      
+      <!-- Colors Section -->
+      <section id="colors" class="ds-section">
+        <h2 class="section-title">Colors</h2>
+        <p class="section-description">Our color palette supports both light and dark themes</p>
+        
+        <div class="color-grid">
+          <div class="color-group">
+            <h3>Primary Colors</h3>
+            <div class="color-swatches">
+              <div class="color-swatch">
+                <div class="swatch" style="background: var(--color-bg-primary)"></div>
+                <div class="swatch-info">
+                  <strong>Primary Background</strong>
+                  <code>--color-bg-primary</code>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="swatch" style="background: var(--color-bg-secondary)"></div>
+                <div class="swatch-info">
+                  <strong>Secondary Background</strong>
+                  <code>--color-bg-secondary</code>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="swatch" style="background: var(--color-text-primary)"></div>
+                <div class="swatch-info">
+                  <strong>Primary Text</strong>
+                  <code>--color-text-primary</code>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="color-group">
+            <h3>Accent Colors</h3>
+            <div class="color-swatches">
+              <div class="color-swatch">
+                <div class="swatch" style="background: var(--color-button-accent-bg)"></div>
+                <div class="swatch-info">
+                  <strong>Accent</strong>
+                  <code>--color-button-accent-bg</code>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="swatch" style="background: var(--color-accent-hover)"></div>
+                <div class="swatch-info">
+                  <strong>Accent Hover</strong>
+                  <code>--color-accent-hover</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography Section -->
+      <section id="typography" class="ds-section">
+        <h2 class="section-title">Typography</h2>
+        <p class="section-description">Font sizes, weights and line heights</p>
+        
+        <div class="typography-showcase">
+          <div class="type-sample">
+            <h1 class="sample-text-3xl">Heading 1 (32px)</h1>
+            <code>font-size: var(--font-size-3xl)</code>
+          </div>
+          <div class="type-sample">
+            <h2 class="sample-text-2xl">Heading 2 (24px)</h2>
+            <code>font-size: var(--font-size-2xl)</code>
+          </div>
+          <div class="type-sample">
+            <h3 class="sample-text-xl">Heading 3 (20px)</h3>
+            <code>font-size: var(--font-size-xl)</code>
+          </div>
+          <div class="type-sample">
+            <p class="sample-text-base">Body text (16px)</p>
+            <code>font-size: var(--font-size-base)</code>
+          </div>
+          <div class="type-sample">
+            <p class="sample-text-sm">Small text (14px)</p>
+            <code>font-size: var(--font-size-sm)</code>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buttons Section -->
+      <section id="buttons" class="ds-section">
+        <h2 class="section-title">Buttons</h2>
+        <p class="section-description">Interactive button components</p>
+        
+        <div class="button-showcase">
+          <div class="button-group">
+            <h3>Primary Buttons</h3>
+            <div class="button-examples">
+              <button class="btn-primary">Primary Button</button>
+              <button class="btn-primary" disabled>Disabled</button>
+            </div>
+          </div>
+          
+          <div class="button-group">
+            <h3>Icon Buttons</h3>
+            <div class="button-examples">
+              <button class="btn-icon">
+                <img src="assets/icons/add-icon.svg" alt="Add" width="16" height="16">
+              </button>
+              <button class="btn-icon">
+                <img src="assets/icons/send-icon.svg" alt="Send" width="16" height="16">
+              </button>
+              <button class="btn-icon">
+                <img src="assets/icons/microphone-icon.svg" alt="Mic" width="16" height="16">
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Icons Section -->
+      <section id="icons" class="ds-section">
+        <h2 class="section-title">Icons</h2>
+        <p class="section-description">SVG icon library</p>
+        
+        <div class="icon-grid">
+          <div class="icon-item">
+            <img src="assets/icons/add-icon.svg" alt="Add" class="demo-icon">
+            <span>add-icon.svg</span>
+          </div>
+          <div class="icon-item">
+            <img src="assets/icons/send-icon.svg" alt="Send" class="demo-icon">
+            <span>send-icon.svg</span>
+          </div>
+          <div class="icon-item">
+            <img src="assets/icons/microphone-icon.svg" alt="Microphone" class="demo-icon">
+            <span>microphone-icon.svg</span>
+          </div>
+          <div class="icon-item">
+            <img src="assets/icons/image-icon.svg" alt="Image" class="demo-icon">
+            <span>image-icon.svg</span>
+          </div>
+          <div class="icon-item">
+            <img src="assets/icons/light-mode-icon.svg" alt="Light mode" class="demo-icon">
+            <span>light-mode-icon.svg</span>
+          </div>
+          <div class="icon-item">
+            <img src="assets/icons/account-icon.svg" alt="Account" class="demo-icon">
+            <span>account-icon.svg</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Components Section -->
+      <section id="components" class="ds-section">
+        <h2 class="section-title">Components</h2>
+        <p class="section-description">Reusable UI components</p>
+        
+        <div class="component-showcase">
+          <div class="component-demo">
+            <h3>Input Field</h3>
+            <div class="demo-input-container">
+              <input type="text" placeholder="Type message" class="demo-input">
+              <button class="demo-send-btn">
+                <img src="assets/icons/send-icon.svg" alt="Send" width="16" height="16">
+              </button>
+            </div>
+          </div>
+          
+          <div class="component-demo">
+            <h3>Chat Message</h3>
+            <div class="demo-messages">
+              <div class="demo-message user">
+                <div class="demo-message-content">Hello! This is a user message.</div>
+              </div>
+              <div class="demo-message assistant">
+                <div class="demo-avatar">AI</div>
+                <div class="demo-message-content">Hello! This is an assistant message with a longer text to show how it looks in a real conversation.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spacing Section -->
+      <section id="spacing" class="ds-section">
+        <h2 class="section-title">Spacing</h2>
+        <p class="section-description">Spacing scale and layout tokens</p>
+        
+        <div class="spacing-showcase">
+          <div class="spacing-item">
+            <div class="spacing-demo" style="width: 4px; height: 20px;"></div>
+            <span>--spacing-1 (4px)</span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-demo" style="width: 8px; height: 20px;"></div>
+            <span>--spacing-2 (8px)</span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-demo" style="width: 12px; height: 20px;"></div>
+            <span>--spacing-3 (12px)</span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-demo" style="width: 16px; height: 20px;"></div>
+            <span>--spacing-4 (16px)</span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-demo" style="width: 20px; height: 20px;"></div>
+            <span>--spacing-5 (20px)</span>
+          </div>
+          <div class="spacing-item">
+            <div class="spacing-demo" style="width: 24px; height: 20px;"></div>
+            <span>--spacing-6 (24px)</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>

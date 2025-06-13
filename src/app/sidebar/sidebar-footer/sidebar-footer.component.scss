@@ -1,0 +1,61 @@
+.sidebar-footer {
+  padding: var(--spacing-2);
+  border-top: 1px solid var(--color-border-primary);
+  background: var(--color-bg-sidebar);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  height: 36px;
+  margin-bottom: 1px;
+
+  &:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+    transform: translateX(2px);
+    
+    .menu-icon {
+      opacity: 1;
+    }
+  }
+
+  .menu-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: opacity var(--transition-fast);
+    filter: var(--filter-icon-dark);
+  }
+
+  .menu-text {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-normal);
+  }
+}
+
+/* Темная тема */
+[data-theme="dark"] {
+  .menu-item .menu-icon {
+    filter: var(--filter-icon-light);
+  }
+}
+
+/* Дополнительный селектор для темной темы */
+:host-context([data-theme="dark"]) {
+  .menu-item .menu-icon {
+    filter: var(--filter-icon-light);
+  }
+}
+

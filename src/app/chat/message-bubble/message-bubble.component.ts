@@ -1,9 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Message } from '../chat.service';
 
 @Component({
   selector: 'app-message-bubble',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './message-bubble.component.html',
   styleUrls: ['./message-bubble.component.scss'],
   animations: [

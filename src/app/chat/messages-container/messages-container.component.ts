@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { ChatService } from '../chat.service';
+import { MessageBubbleComponent } from '../message-bubble/message-bubble.component';
 
 @Component({
   selector: 'app-messages-container',
+  standalone: true,
+  imports: [CommonModule, MessageBubbleComponent],
   templateUrl: './messages-container.component.html',
   styleUrls: ['./messages-container.component.scss'],
   animations: [
