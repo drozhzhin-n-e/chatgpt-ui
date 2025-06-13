@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --configuration production",
-    "deploy": "ng build --configuration production --base-href='/anemone-ai/' && npx angular-cli-ghpages --dir=dist/chatgpt-ui",
+    "deploy": "ng build --configuration production --base-href='/chatgpt-ui/' && npx angular-cli-ghpages --dir=dist/chatgpt-ui",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
