@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, combineLatest } from 'rxjs';
 import { delay, map, tap } from 'rxjs/operators';
+import { AuthService } from '../shared/services/auth.service';
 
 export interface Message {
   id: string;
@@ -13,12 +14,20 @@ export interface Chat {
   id: string;
   title: string;
   messages: Message[];
+  userId?: string; // Привязка к пользователю
 }
 
 @Injectable({ providedIn: 'root' })
 export class ChatService {
   private readonly STORAGE_KEY = 'chatgpt-ui-chats-v1';
   private readonly CURRENT_ID_KEY = 'chatgpt-ui-current-id-v1';
+
+  constructor(private authService: AuthService) {
+    // Subscribe to auth changes to validate current chat
+    this.authService.authState$.subscribe(authState => {
+      this.validateCurrentChat(authState.user);
+    });
+  }
 
   // ---------- state subjects ----------
   private _chats = new BehaviorSubject<Chat[]>(this.loadChats());
@@ -32,6 +41,14 @@ export class ChatService {
     map(([chats, id]) => chats.find(c => c.id === id)?.messages ?? [])
   );
 
+  // chats filtered by current user
+  readonly userChats$ = combineLatest([this.chats$, this.authService.authState$]).pipe(
+    map(([chats, authState]) => {
+      if (!authState.user) return [];
+      return chats.filter(chat => chat.userId === authState.user!.id);
+    })
+  );
+
   // demo replies for stubbed bot
   private demoResponses: Record<string, string> = {
     'квантов': 'Квантовая физика — это удивительная область науки!',
@@ -41,8 +58,16 @@ export class ChatService {
   // ---------- public API ----------
 
   newChat(initialTitle = 'New chat'): string {
+    const currentUser = this.authService.getCurrentUser();
+    if (!currentUser) return '';
+    
     const id = this.genId();
-    const chat: Chat = { id, title: initialTitle, messages: [] };
+    const chat: Chat = { 
+      id, 
+      title: initialTitle, 
+      messages: [],
+      userId: currentUser.id 
+    };
     this._chats.next([chat, ...this._chats.value]);
     this._currentId.next(id);
     this.saveCurrentId();
@@ -184,6 +209,26 @@ export class ChatService {
       localStorage.setItem(this.CURRENT_ID_KEY, this._currentId.value ?? '');
     } catch {
       // ignored
+    }
+  }
+
+  private validateCurrentChat(user: any) {
+    if (!user) {
+      // User logged out - clear current chat
+      this._currentId.next(null);
+      this.saveCurrentId();
+      return;
+    }
+
+    const currentId = this._currentId.value;
+    if (!currentId) return;
+
+    // Check if current chat belongs to the logged-in user
+    const currentChat = this._chats.value.find(c => c.id === currentId);
+    if (!currentChat || currentChat.userId !== user.id) {
+      // Current chat doesn't belong to this user - reset to welcome screen
+      this._currentId.next(null);
+      this.saveCurrentId();
     }
   }
 } 

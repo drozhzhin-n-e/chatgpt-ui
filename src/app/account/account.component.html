@@ -1,0 +1,193 @@
+<div class="account-container">
+  <div class="account-header">
+    <button class="back-button" (click)="goBack()">
+      ← Back to Chat
+    </button>
+    <h1>Account Settings</h1>
+  </div>
+
+  <div class="account-content" *ngIf="user">
+    <!-- Messages -->
+    <div class="message" *ngIf="message" [class.success]="messageType === 'success'" [class.error]="messageType === 'error'">
+      {{ message }}
+    </div>
+
+    <!-- Profile Section -->
+    <div class="account-section">
+      <div class="section-header">
+        <h2>Profile Information</h2>
+        <button 
+          *ngIf="!isEditing" 
+          class="btn-secondary edit-button" 
+          (click)="startEditing()"
+          [disabled]="isLoading">
+          Edit Profile
+        </button>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-avatar">
+          {{ user.username.charAt(0).toUpperCase() }}
+        </div>
+        
+        <div class="profile-details">
+          <!-- View Mode -->
+          <div *ngIf="!isEditing" class="profile-view">
+            <div class="profile-field">
+              <label>Username</label>
+              <div class="field-value">{{ user.username }}</div>
+            </div>
+            
+            <div class="profile-field">
+              <label>Email</label>
+              <div class="field-value">{{ user.email || 'Not provided' }}</div>
+            </div>
+            
+            <div class="profile-field">
+              <label>Account Type</label>
+              <div class="field-value account-type" [class.pro]="user.accountType === 'pro'">
+                {{ getAccountTypeLabel() }}
+              </div>
+            </div>
+            
+            <div class="profile-field">
+              <label>Member Since</label>
+              <div class="field-value">{{ getJoinDate() }}</div>
+            </div>
+          </div>
+
+          <!-- Edit Mode -->
+          <form *ngIf="isEditing" class="profile-edit" (ngSubmit)="saveChanges()">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <div class="input-container">
+                <input 
+                  type="text" 
+                  id="username"
+                  [(ngModel)]="editForm.username" 
+                  name="username"
+                  placeholder="Enter username"
+                  class="form-input"
+                  [disabled]="isLoading"
+                  required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <div class="input-container">
+                <input 
+                  type="email" 
+                  id="email"
+                  [(ngModel)]="editForm.email" 
+                  name="email"
+                  placeholder="Enter email (optional)"
+                  class="form-input"
+                  [disabled]="isLoading">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button 
+                type="button" 
+                class="btn-secondary" 
+                (click)="cancelEditing()"
+                [disabled]="isLoading">
+                Cancel
+              </button>
+              <button 
+                type="submit" 
+                class="btn-primary" 
+                [disabled]="isLoading">
+                <span *ngIf="!isLoading">Save Changes</span>
+                <span *ngIf="isLoading" class="loading">Saving...</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Type Section -->
+    <div class="account-section" *ngIf="user.accountType === 'free'">
+      <div class="section-header">
+        <h2>Upgrade Account</h2>
+      </div>
+      
+      <div class="upgrade-card">
+        <div class="upgrade-content">
+          <div class="upgrade-icon">✨</div>
+          <div class="upgrade-info">
+            <h3>Upgrade to Pro</h3>
+            <p>Get access to advanced features, priority support, and unlimited usage.</p>
+            <ul class="upgrade-features">
+              <li>✓ Unlimited conversations</li>
+              <li>✓ Advanced AI models</li>
+              <li>✓ Priority support</li>
+              <li>✓ Export conversations</li>
+            </ul>
+          </div>
+        </div>
+        <button 
+          class="btn-primary upgrade-button" 
+          (click)="upgradeToPro()"
+          [disabled]="isLoading">
+          <span *ngIf="!isLoading">Upgrade to Pro</span>
+          <span *ngIf="isLoading" class="loading">Upgrading...</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pro Features Section -->
+    <div class="account-section" *ngIf="user.accountType === 'pro'">
+      <div class="section-header">
+        <h2>Pro Features</h2>
+      </div>
+      
+      <div class="pro-features-card">
+        <div class="pro-badge">
+          <span class="pro-icon">✨</span>
+          <span>Pro Account Active</span>
+        </div>
+        <div class="features-list">
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <span>Unlimited conversations</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <span>Advanced AI models</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <span>Priority support</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <span>Export conversations</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Danger Zone -->
+    <div class="account-section danger-section">
+      <div class="section-header">
+        <h2>Danger Zone</h2>
+      </div>
+      
+      <div class="danger-card">
+        <div class="danger-content">
+          <h3>Delete Account</h3>
+          <p>Permanently delete your account and all associated data. This action cannot be undone.</p>
+        </div>
+        <button 
+          class="btn-danger" 
+          (click)="deleteAccount()"
+          [disabled]="isLoading">
+          Delete Account
+        </button>
+      </div>
+    </div>
+  </div>
+</div> 

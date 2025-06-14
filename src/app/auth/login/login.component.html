@@ -1,0 +1,135 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>{{ isLoginMode ? 'Sign in' : 'Sign up' }}</h1>
+      <p>{{ isLoginMode ? 'Welcome back to your account' : 'Create your new account' }}</p>
+    </div>
+
+    <!-- Messages -->
+    <div class="message error-message" *ngIf="message" [class.success]="messageType === 'success'" [class.error]="messageType === 'error'">
+      {{ message }}
+    </div>
+
+    <!-- Login Form -->
+    <form *ngIf="isLoginMode" (ngSubmit)="onLogin()" class="auth-form">
+      <div class="form-group">
+        <label for="loginUsername">Username</label>
+        <div class="input-container">
+          <input 
+            type="text" 
+            id="loginUsername"
+            data-testid="username-input"
+            [(ngModel)]="loginForm.username" 
+            name="loginUsername"
+            placeholder="Enter your username"
+            [disabled]="isLoading"
+            class="form-input"
+            required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <div class="input-container">
+          <input 
+            type="password" 
+            id="loginPassword"
+            data-testid="password-input"
+            [(ngModel)]="loginForm.password" 
+            name="loginPassword"
+            placeholder="Enter your password"
+            [disabled]="isLoading"
+            class="form-input"
+            required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary auth-button" data-testid="signin-button" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Sign in</span>
+        <span *ngIf="isLoading" class="loading">Signing in...</span>
+      </button>
+    </form>
+
+    <!-- Register Form -->
+    <form *ngIf="!isLoginMode" (ngSubmit)="onRegister()" class="auth-form">
+      <div class="form-group">
+        <label for="registerUsername">Username *</label>
+        <div class="input-container">
+          <input 
+            type="text" 
+            id="registerUsername"
+            data-testid="username-input"
+            [(ngModel)]="registerForm.username" 
+            name="registerUsername"
+            placeholder="Choose a username"
+            [disabled]="isLoading"
+            class="form-input"
+            required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="registerEmail">Email (optional)</label>
+        <div class="input-container">
+          <input 
+            type="email" 
+            id="registerEmail"
+            data-testid="email-input"
+            [(ngModel)]="registerForm.email" 
+            name="registerEmail"
+            placeholder="Enter your email"
+            [disabled]="isLoading"
+            class="form-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="registerPassword">Password *</label>
+        <div class="input-container">
+          <input 
+            type="password" 
+            id="registerPassword"
+            data-testid="password-input"
+            [(ngModel)]="registerForm.password" 
+            name="registerPassword"
+            placeholder="Create a password (min 4 characters)"
+            [disabled]="isLoading"
+            class="form-input"
+            required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password *</label>
+        <div class="input-container">
+          <input 
+            type="password" 
+            id="confirmPassword"
+            [(ngModel)]="registerForm.confirmPassword" 
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            [disabled]="isLoading"
+            class="form-input"
+            required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary auth-button" data-testid="signup-button" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Create account</span>
+        <span *ngIf="isLoading" class="loading">Creating account...</span>
+      </button>
+    </form>
+
+    <!-- Mode Toggle -->
+    <div class="mode-toggle">
+      <p *ngIf="isLoginMode">
+        Don't have an account? 
+        <button type="button" class="link-button" (click)="toggleMode()">Sign up</button>
+      </p>
+      <p *ngIf="!isLoginMode">
+        Already have an account? 
+        <button type="button" class="link-button" (click)="toggleMode()">Sign in</button>
+      </p>
+    </div>
+  </div>
+</div> 

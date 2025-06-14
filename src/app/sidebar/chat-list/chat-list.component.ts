@@ -12,7 +12,7 @@ export class ChatListComponent {
   currentId$: Observable<string | null>;
 
   constructor(private chatService: ChatService) {
-    this.chats$ = this.chatService.chats$;
+    this.chats$ = this.chatService.userChats$; // Используем фильтрованные чаты пользователя
     this.currentId$ = this.chatService.currentId$;
   }
 

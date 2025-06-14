@@ -7,10 +7,14 @@ import { SidebarModule } from './sidebar/sidebar.module';
 
 import { AppComponent } from './app.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const routes: Routes = [
   { path: '', redirectTo: '/chat', pathMatch: 'full' },
-  { path: 'chat', loadComponent: () => import('./chat/chat-view/chat-view.component').then(c => c.ChatViewComponent) },
-  { path: 'design-system', loadComponent: () => import('./design-system/design-system.component').then(c => c.DesignSystemComponent) },
+  { path: 'login', loadComponent: () => import('./auth/login/login.component').then(c => c.LoginComponent) },
+  { path: 'chat', loadComponent: () => import('./chat/chat-view/chat-view.component').then(c => c.ChatViewComponent), canActivate: [AuthGuard] },
+  { path: 'account', loadComponent: () => import('./account/account.component').then(c => c.AccountComponent), canActivate: [AuthGuard] },
+  { path: 'design-system', loadComponent: () => import('./design-system/design-system.component').then(c => c.DesignSystemComponent), canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/chat' }
 ];
 

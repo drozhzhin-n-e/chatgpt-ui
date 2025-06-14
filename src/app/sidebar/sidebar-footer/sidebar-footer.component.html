@@ -1,5 +1,16 @@
 <div class="sidebar-footer">
-  <div class="menu-item" (click)="toggleTheme()">
+  <!-- User Info Section -->
+  <div class="user-info" *ngIf="user">
+    <div class="user-details">
+      <div class="user-email">{{ getUserEmail() }}</div>
+      <div class="account-type" [class.pro]="user.accountType === 'pro'">
+        {{ getAccountTypeLabel() }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Items -->
+  <div class="menu-item" data-testid="theme-toggle" (click)="toggleTheme()">
     <img class="menu-icon" src="assets/icons/light-mode-icon.svg" alt="Theme toggle">
     <span class="menu-text">{{ (theme$ | async) === 'light' ? 'Dark mode' : 'Light mode' }}</span>
   </div>
@@ -9,9 +20,14 @@
     <span class="menu-text">Clear conversations</span>
   </div>
   
-  <div class="menu-item">
+  <div class="menu-item" data-testid="my-account-button" (click)="navigateToAccount()">
     <img class="menu-icon" src="assets/icons/account-icon.svg" alt="My account">
     <span class="menu-text">My account</span>
+  </div>
+
+  <div class="menu-item upgrade-item" *ngIf="user?.accountType === 'free'" (click)="upgradeToPro()">
+    <img class="menu-icon" src="assets/icons/faq-icon.svg" alt="Upgrade to Pro">
+    <span class="menu-text">✨ Upgrade to Pro</span>
   </div>
   
   <div class="menu-item">
@@ -19,7 +35,7 @@
     <span class="menu-text">Updates & FAQ</span>
   </div>
   
-  <div class="menu-item">
+  <div class="menu-item" data-testid="logout-button" (click)="logout()">
     <img class="menu-icon" src="assets/icons/logout-icon.svg" alt="Log out">
     <span class="menu-text">Log out</span>
   </div>
