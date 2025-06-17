@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AuthService, User } from '../shared/services/auth.service';
+import { AuthService } from '../shared/services/auth.service';
+import { User } from '../shared/models/interfaces';
 
 @Component({
   selector: 'app-account',
@@ -144,4 +145,4 @@ export class AccountComponent implements OnInit, OnDestroy {
   private clearMessage(): void {
     this.message = '';
   }
-} 
+}

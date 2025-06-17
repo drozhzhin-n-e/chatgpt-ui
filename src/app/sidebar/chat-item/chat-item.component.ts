@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Chat } from '../../chat/chat.service';
+import { Chat } from '../../shared/models/interfaces';
 
 @Component({
   selector: 'app-chat-item',

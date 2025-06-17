@@ -2,20 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, combineLatest } from 'rxjs';
 import { delay, map, tap } from 'rxjs/operators';
 import { AuthService } from '../shared/services/auth.service';
-
-export interface Message {
-  id: string;
-  author: 'user' | 'assistant';
-  content: string;
-  timestamp: string; // ISO string – проще хранить
-}
-
-export interface Chat {
-  id: string;
-  title: string;
-  messages: Message[];
-  userId?: string; // Привязка к пользователю
-}
+import { User, Message, Chat } from '../shared/models/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class ChatService {
@@ -212,7 +199,7 @@ export class ChatService {
     }
   }
 
-  private validateCurrentChat(user: any) {
+  private validateCurrentChat(user: User | null) {
     if (!user) {
       // User logged out - clear current chat
       this._currentId.next(null);
@@ -231,4 +218,4 @@ export class ChatService {
       this.saveCurrentId();
     }
   }
-} 
+}

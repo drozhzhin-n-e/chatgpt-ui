@@ -1,19 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-
-export interface User {
-  id: string;
-  username: string;
-  email?: string;
-  createdAt: string;
-  lastLoginAt: string;
-  accountType: 'free' | 'pro';
-}
-
-export interface AuthState {
-  isAuthenticated: boolean;
-  user: User | null;
-}
+import { User, UserWithPassword, AuthState, Chat } from '../models/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -94,7 +81,7 @@ export class AuthService {
         const users = this.getUsers();
         const user = users.find(u => 
           u.username.toLowerCase() === username.toLowerCase() && 
-          (u as any).password === password
+          u.password === password
         );
 
         if (!user) {
@@ -108,7 +95,7 @@ export class AuthService {
         this.saveUsers(users);
 
         // Set current user
-        const { password: _, ...userWithoutPassword } = user as any;
+        const { password: _, ...userWithoutPassword } = user;
         this.setCurrentUser(userWithoutPassword);
 
         observer.next({ success: true, message: 'Signed in successfully!' });
@@ -208,7 +195,7 @@ export class AuthService {
       const chatsData = localStorage.getItem(CHATS_KEY);
       if (chatsData) {
         const allChats = JSON.parse(chatsData);
-        const filteredChats = allChats.filter((chat: any) => chat.userId !== userId);
+        const filteredChats = allChats.filter((chat: Chat) => chat.userId !== userId);
         localStorage.setItem(CHATS_KEY, JSON.stringify(filteredChats));
       }
 
@@ -236,7 +223,7 @@ export class AuthService {
     }
   }
 
-  private getUsers(): any[] {
+  private getUsers(): UserWithPassword[] {
     try {
       const usersData = localStorage.getItem(this.USERS_KEY);
       return usersData ? JSON.parse(usersData) : [];
@@ -245,11 +232,11 @@ export class AuthService {
     }
   }
 
-  private saveUsers(users: any[]): void {
+  private saveUsers(users: UserWithPassword[]): void {
     localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
   }
 
   private generateId(): string {
     return Date.now().toString(36) + Math.random().toString(36).substring(2, 8);
   }
-} 
+}

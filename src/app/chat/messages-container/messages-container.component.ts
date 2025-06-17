@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { ChatService } from '../chat.service';
+import { Message } from '../../shared/models/interfaces';
 import { MessageBubbleComponent } from '../message-bubble/message-bubble.component';
 
 @Component({
@@ -24,7 +25,7 @@ export class MessagesContainerComponent {
 
   constructor(private chat: ChatService) {}
 
-  trackByMessageId(index: number, message: any): string {
+  trackByMessageId(index: number, message: Message): string {
     return message.id;
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Message } from '../chat.service';
+import { Message } from '../../shared/models/interfaces';
 
 @Component({
   selector: 'app-message-bubble',

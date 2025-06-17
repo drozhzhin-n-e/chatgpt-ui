@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThemeService, Theme } from '../../shared/services/theme.service';
-import { AuthService, User } from '../../shared/services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { User } from '../../shared/models/interfaces';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -74,4 +75,4 @@ export class SidebarFooterComponent implements OnInit, OnDestroy {
       }
     });
   }
-} 
+}
