@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { AuthService, User, AuthState } from './auth.service';
+import { AuthService } from './auth.service';
+import { User, AuthState } from '../models/interfaces';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -262,4 +263,4 @@ describe('AuthService', () => {
       });
     });
   });
-}); 
+});
